@@ -20,14 +20,17 @@ public class Client {
     public static void conectar(Socket cliente){
         try {
 
-            client = new Socket(new Endereco().getEndereco(), Port.PORT.getPort());            
+            new Endereco();
+            client = new Socket(Endereco.getEndereco(), Port.PORT.getPort());  
+            System.out.println("Cliente Conectado com sucesso!");          
 
         } catch (Exception e) {
+            System.out.println("Erro ao conectar cliente");
             e.printStackTrace();
         } 
     }
 
-    public static void transmitirMensagem() throws ClassNotFoundException{
+    public void transmitirMensagem() throws ClassNotFoundException{
         try {
             ObjectInputStream entrada;
             entrada = new ObjectInputStream(client.getInputStream());

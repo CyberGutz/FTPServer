@@ -4,14 +4,14 @@ public enum Port {
     //O Enum PORT contém o número da porta que será usada para comunicação.
     PORT(12385);
 
-    private final int num;
+    private static int num;
 
     Port(int num){
-        this.num = num;
+        num = num;
     }
 
     // A função getPort() retorna o número da porta.
-    public int getPort(){
-        return this.num;
+    public static int getPort(){
+        return num;
     }
 }
