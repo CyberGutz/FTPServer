@@ -1,23 +1,23 @@
 package server;
 
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-import model.Port;
+
+import model.Endereco;
 
 public class Server {
     public static ServerSocket server;
-    
     public Server(){
-        conectar(server);
     }
 
-    public static void conectar(ServerSocket server){
+    public void conectar(){
         try{
-            server = new ServerSocket(Port.getPort());
-            System.out.println("Server ouvindo a porta " + Port.getPort());
+            server = new ServerSocket(Endereco.getPorta());
+            System.out.println("Server ouvindo a porta " + Endereco.getPorta());
         }
         catch(Exception e){
             System.out.println("Erro ao conectar o server");
@@ -28,7 +28,9 @@ public class Server {
     public void enviarMensagem(){
         try{
             while(true){
+                System.out.println("Entrou no server");
                 Socket cliente = server.accept();
+                System.out.println("Aceitou cliente");
                 System.out.println("Cliente Conectado: " + cliente.getInetAddress().getHostAddress());
                 ObjectOutputStream saida = new ObjectOutputStream(cliente.getOutputStream());
                 saida.flush();
@@ -37,7 +39,7 @@ public class Server {
                 cliente.close();
             }
         }
-        catch(Exception e){
+        catch(IOException e){
             System.out.println("Erro ao enviar mensagem");
             e.printStackTrace();
         }

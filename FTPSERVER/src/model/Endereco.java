@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 public class Endereco {
     private String aux;
     private static String endereco = "";
+    private static int porta = 12385;
 
     public Endereco() throws UnknownHostException{
         aux = Inet4Address.getLocalHost().toString();
@@ -25,5 +26,9 @@ public class Endereco {
 
     public static String getEndereco(){
         return endereco;
+    }
+
+    public static int getPorta(){
+        return porta;
     }
 }

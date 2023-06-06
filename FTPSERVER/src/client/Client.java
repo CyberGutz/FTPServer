@@ -8,20 +8,18 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 import model.Endereco;
-import model.Port;
 
 public class Client {
     public static Socket client;
 
     public Client(){
-        conectar(client);
     }
 
-    public static void conectar(Socket cliente){
+    public void conectar(){
         try {
 
             new Endereco();
-            client = new Socket(Endereco.getEndereco(), Port.PORT.getPort());  
+            client = new Socket(Endereco.getEndereco(), Endereco.getPorta());  
             System.out.println("Cliente Conectado com sucesso!");          
 
         } catch (Exception e) {
@@ -39,7 +37,6 @@ public class Client {
             entrada.close();
             System.out.println("Conexão encerrada");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         

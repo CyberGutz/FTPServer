@@ -7,6 +7,7 @@ public class ServerFront {
 
     public void serverMain(){
         System.out.println("Você entrou como Server... \n\n\n\n");
+        server.conectar();
         server.enviarMensagem();
     }
 }
