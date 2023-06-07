@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Date;
 
 
@@ -11,7 +12,14 @@ import model.Endereco;
 
 public class Server {
     public static ServerSocket server;
+    public Endereco end;
     public Server(){
+        try {
+            end = new Endereco();
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void conectar(){
@@ -24,6 +32,8 @@ public class Server {
             e.printStackTrace();
         }
     }
+
+
 
     public void enviarMensagem(){
         try{
